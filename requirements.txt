@@ -1,1 +1,2 @@
 pygsheets==2.0.5
+pandas==1.4.1
