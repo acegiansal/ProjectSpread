@@ -1,6 +1,5 @@
 import pygsheets
 import pandas as pd
-import argparse
 
 SPREADSHEET_NAME = "Test Spreadsheet"
 
