@@ -1,13 +1,21 @@
 import pygsheets
 import pandas as pd
 
-def testFunction():
-    print("THIS IS A TEST")
-    return 3
 
-def openSpreadsheet(pageName):
+def open_spreadsheet(page_name):
     # authorization
-    gc = pygsheets.authorize(service_file='D:/Documents/Creds/credentials3.json')
+    gc = pygsheets.authorize(service_file='credentials3.json')
     # open the google spreadsheet (where 'PY to Gsheet Test' is the name of my sheet)
-    sh = gc.open(pageName)
+    sh = gc.open(page_name)
     return sh
+
+
+def print_column(date_range):
+    """
+    Can only print a column
+    :param date_range:
+    :return:
+    """
+    for c in date_range.cells:
+        cell = c[0]
+        print(f"Cell {cell.label} has value: {cell.value}")

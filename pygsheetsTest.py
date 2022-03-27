@@ -5,7 +5,7 @@ from External import SpreadSheetCom
 SPREADSHEET_NAME = "Test Spreadsheet"
 
 if __name__ == '__main__':
-    sheet = SpreadSheetCom.openSpreadsheet(SPREADSHEET_NAME)
+    sheet = SpreadSheetCom.open_spreadsheet(SPREADSHEET_NAME)
 
     # Create empty dataframe
     df = pd.DataFrame()
@@ -13,16 +13,11 @@ if __name__ == '__main__':
     # Create a column
     df['name'] = ['John', 'Steve', 'Sarah']
 
-    #select the first sheet
+    # select the first sheet
     wks = sheet[0]
 
-    #update the first sheet with df, starting at cell B2.
+    # update the first sheet with df, starting at cell B2.
     # wks.set_dataframe(df,(1,1))
 
-    dateRange = pygsheets.DataRange('A1', 'A4', wks)
-    for c in dateRange.cells:
-        cell = c[0]
-        print(f"Cell {cell.label} has value: {cell.value}")
-
-    for row in wks:
-        print(row)
+    dateRange = pygsheets.DataRange('A2', 'D2', wks)
+    SpreadSheetCom.print_column(dateRange)
