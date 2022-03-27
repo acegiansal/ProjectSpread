@@ -1,11 +1,11 @@
 import pygsheets
 import pandas as pd
+from External import SpreadSheetCom
 
 SPREADSHEET_NAME = "Test Spreadsheet"
 
 if __name__ == '__main__':
-    #authorization
-    gc = pygsheets.authorize(service_file='credentialsPart2.json')
+    sheet = SpreadSheetCom.openSpreadsheet(SPREADSHEET_NAME)
 
     # Create empty dataframe
     df = pd.DataFrame()
@@ -13,11 +13,8 @@ if __name__ == '__main__':
     # Create a column
     df['name'] = ['John', 'Steve', 'Sarah']
 
-    #open the google spreadsheet (where 'PY to Gsheet Test' is the name of my sheet)
-    sh = gc.open(SPREADSHEET_NAME)
-
     #select the first sheet
-    wks = sh[0]
+    wks = sheet[0]
 
     #update the first sheet with df, starting at cell B2.
     # wks.set_dataframe(df,(1,1))
