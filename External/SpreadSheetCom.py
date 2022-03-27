@@ -4,6 +4,7 @@ from External import DataManagement
 
 def open_spreadsheet(page_name) -> pygsheets.spreadsheet.Spreadsheet:
     # authorization
+    # The credentials should be added to the project directory, and will be git ignored
     gc = pygsheets.authorize(service_file='credentials3.json')
     # open the google spreadsheet (where 'PY to Gsheet Test' is the name of my sheet)
     sh = gc.open(page_name)

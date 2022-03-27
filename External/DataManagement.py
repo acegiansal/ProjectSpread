@@ -14,4 +14,5 @@ if __name__ == '__main__':
     df = pd.DataFrame()
     df['name'] = ['John', 'Steve', 'Sarah']
     df['test'] = [1, 2, 3]
-    print(add_row_to_data_frame(df, ['Sup', 12]))
+    df = (add_row_to_data_frame(df, ['Sup', 12]))
+    print(df)
