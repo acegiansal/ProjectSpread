@@ -1,5 +1,5 @@
 import pygsheets
-import pandas as pd
+import DataManagement
 
 
 def open_spreadsheet(page_name) -> pygsheets.spreadsheet.Spreadsheet:
@@ -13,7 +13,7 @@ def open_spreadsheet(page_name) -> pygsheets.spreadsheet.Spreadsheet:
 def print_range(data_range) -> None:
     """
     Prints any range cell by cell
-    :param date_range: The range to print
+    :param data_range: The range to print
     :return: None
     """
     for c in data_range.cells:
@@ -28,16 +28,12 @@ def update_row(data_range: pygsheets.DataRange, values: list) -> None:
 
 def compare_ranges(r1, values):
     for i in range(len(r1.cells)):
-        row_to_check = _convert_to_str(values[i])
+        row_to_check = DataManagement.convert_to_str(values[i])
         counter = 0
         for cell in r1.cells[i]:
             if cell.value != row_to_check[counter]:
                 return False
             counter += 1
     return True
-
-
-def _convert_to_str(values):
-    return [str(x) for x in values]
 
 
