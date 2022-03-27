@@ -1,5 +1,5 @@
 import pygsheets
-import DataManagement
+from External import DataManagement
 
 
 def open_spreadsheet(page_name) -> pygsheets.spreadsheet.Spreadsheet:
