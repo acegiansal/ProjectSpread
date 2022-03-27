@@ -16,8 +16,13 @@ if __name__ == '__main__':
     # select the first sheet
     wks = sheet[0]
 
-    # update the first sheet with df, starting at cell B2.
+    # update the first sheet with df,
     # wks.set_dataframe(df,(1,1))
 
-    dateRange = pygsheets.DataRange('A2', 'D2', wks)
-    SpreadSheetCom.print_column(dateRange)
+    dateRange = pygsheets.DataRange('A1', 'b4', wks)
+    print(dateRange)
+    SpreadSheetCom.print_range(dateRange)
+
+    testDateRange = pygsheets.DataRange('A5', 'd5', wks)
+
+    SpreadSheetCom.update_row(testDateRange, [5,6,7,8])

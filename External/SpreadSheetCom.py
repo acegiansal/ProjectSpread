@@ -10,12 +10,17 @@ def open_spreadsheet(page_name):
     return sh
 
 
-def print_column(date_range):
+def print_range(date_range):
     """
     Can only print a column
     :param date_range:
     :return:
     """
     for c in date_range.cells:
-        cell = c[0]
-        print(f"Cell {cell.label} has value: {cell.value}")
+        for cell in c:
+            print(f"Cell {cell.label} has value: {cell.value}")
+
+
+def update_row(date_range, values: list):
+    to_add = [values]
+    date_range.update_values(to_add)
