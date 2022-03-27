@@ -23,6 +23,13 @@ if __name__ == '__main__':
     print(dateRange)
     SpreadSheetCom.print_range(dateRange)
 
+    sheet = SpreadSheetCom.open_spreadsheet("Test Spreadsheet")
+    wks = sheet[0]
     testDateRange = pygsheets.DataRange('A5', 'd5', wks)
+    SpreadSheetCom.update_row(testDateRange, [5, 6, 7, 8])
+    row_check = SpreadSheetCom.compare_ranges(testDateRange, [[5, 6, 7, 8]])
+    if not row_check:
+        print("update row did not work!")
+    else:
+        print("update row worked!")
 
-    SpreadSheetCom.update_row(testDateRange, [5,6,7,8])
