@@ -7,7 +7,7 @@ def testFunction():
 
 def openSpreadsheet(pageName):
     # authorization
-    gc = pygsheets.authorize(service_file='credentialsPart2.json')
+    gc = pygsheets.authorize(service_file='D:/Documents/Creds/credentials3.json')
     # open the google spreadsheet (where 'PY to Gsheet Test' is the name of my sheet)
     sh = gc.open(pageName)
     return sh
