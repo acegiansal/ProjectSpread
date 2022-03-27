@@ -8,9 +8,6 @@ class MyTestCase(unittest.TestCase):
         self.assertEqual(True, True)  # add assertion here
         print("HELLO I AM IN HERE")
 
-    def test_SpreadSheetCom(self):
-        self.assertEqual(3, testFunction(), "Test function failed!")
-
 
 
 if __name__ == '__main__':
