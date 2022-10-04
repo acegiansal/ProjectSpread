@@ -25,6 +25,9 @@ if __name__ == '__main__':
     dateRange = pygsheets.DataRange('A1', 'b4', wks)
     print(dateRange)
     SpreadSheetCom.print_range(dateRange)
+    print(wks.range('A1:B4', returnas='matrix'))
+
+    print(SpreadSheetCom.transpose_range(dateRange))
 
     # testDateRange = pygsheets.DataRange('A5', 'd5', wks)
     # SpreadSheetCom.update_row(testDateRange, [5, 6, 7, 8])

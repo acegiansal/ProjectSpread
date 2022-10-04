@@ -1,11 +1,11 @@
 import pygsheets
-from External import DataManagement
+from External.DataManagement import DataManagement
 
 
 def open_spreadsheet(page_name) -> pygsheets.spreadsheet.Spreadsheet:
     # authorization
     # The credentials should be added to the project directory, and will be git ignored
-    gc = pygsheets.authorize(service_file='credentials3.json')
+    gc = pygsheets.authorize(service_file='credentials.json')
     # open the google spreadsheet (where 'PY to Gsheet Test' is the name of my sheet)
     sh = gc.open(page_name)
     return sh
@@ -37,4 +37,32 @@ def compare_ranges(r1, values):
             counter += 1
     return True
 
+
+def transpose_range(data_range: pygsheets.DataRange):
+    # Get the data as a python list of lists
+    print(data_range)
+    data_as_list = data_range
+    transposed_table = DataManagement.transpose_range(data_as_list)
+    return transposed_table
+
+
+if __name__ == '__main__':
+    test_range = [ [1,2,3], [4,5,6] ]
+    print("Previous Table:\n---------------")
+    for row in test_range:
+        for val in row:
+            print(val, end=" ")
+        print()
+    print("----------------\nGoal:\n------------------")
+    goal = [ [1,4], [2,5], [3,5] ]
+    for row in goal:
+        for val in row:
+            print(val, end=" ")
+        print()
+    print("----------------\nGot:\n------------------")
+    got = transpose_range(test_range)
+    for row in got:
+        for val in row:
+            print(val, end=" ")
+        print()
 
